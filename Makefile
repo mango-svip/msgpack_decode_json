@@ -20,7 +20,9 @@ build:
 	CGO_ENABLED=${CGO_ENABLED} GOOS=windows GOARCH=${GOARCH} ${GOBUILD} -o ${OUTPUT}/msg_unpack.exe .
 build-osx:
 	CGO_ENABLED=${CGO_ENABLED} GOOS=darwin GOARCH=${GOARCH} ${GOBUILD} -o ${OUTPUT}/msg_unpack_osx  .
+	mkdir -p ./bin/osx && mv ./bin/msg_unpack_osx ./bin/osx/msg_unpack
 build-linux:
 	CGO_ENABLED=${CGO_ENABLED} GOOS=linux GOARCH=${GOARCH} ${GOBUILD} -o ${OUTPUT}/msg_unpack_linux   .
+	mkdir -p ./bin/linux && mv ./bin/msg_unpack_linux ./bin/linux/msg_unpack
 build-all: clean build build-osx build-linux
 
